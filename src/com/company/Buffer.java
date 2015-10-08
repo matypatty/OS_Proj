@@ -14,8 +14,8 @@ public class Buffer
     //...
     private int[] buffer_item;
     private final int BUFFER_SIZE = 5;
-    int insertPtr = 0;
-    int removePtr = 0;
+    private int insertPtr = 0;
+    private int removePtr = 0;
 
 
     public Buffer()
