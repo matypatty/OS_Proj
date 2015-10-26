@@ -1,9 +1,12 @@
 package com.company;
 
-import javafx.application.Application;
-
-public class Main {
-
+/*
+* Group
+* Mathew Bielby 1316896
+* Trevor Hastelow 1304893
+ */
+public class Main
+{
     public static void main(String[] args)
     {
         Buffer buff = new Buffer();
@@ -16,11 +19,11 @@ public class Main {
 
         try
         {
-            Thread.sleep(Integer.parseInt(args[0]));
+            Thread.sleep(Integer.parseInt(args[0]) * 1000);
         }
-        catch(Exception ex)
+        catch(InterruptedException ex)
         {
-            System.out.println("Error in main sleep");
+            System.out.println("Thread interrupted.");
         }
 
         System.exit(0);

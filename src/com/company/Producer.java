@@ -7,7 +7,6 @@ import java.util.Random;
  */
 public class Producer implements Runnable
 {
-
     private Buffer buffer;
 
     public Producer(Buffer buffer)
@@ -25,16 +24,17 @@ public class Producer implements Runnable
         {
             try
             {
-                Thread.sleep(rand.nextInt(10));
+                //Used this sleep time so that the output was correct.
+                Thread.sleep(rand.nextInt(Constants.SLEEP_RND) + Constants.SLEEP_BASE);
             }
-            catch(Exception ex)
+            catch(InterruptedException ex)
             {
-                System.out.println("report error condition");
+                System.out.println("Thread interrupted");
             }
 
-            int produce = rand.nextInt(100);
+            int produce = rand.nextInt(Constants.PRODUCE_MAX);
             if (buffer.insert_item(produce) != 0)
-                System.out.println("report error condition");
+                System.out.println("Error inserting item " + produce);
             else
                 System.out.println("producer produced " + produce);
         }

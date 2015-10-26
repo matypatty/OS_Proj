@@ -7,7 +7,6 @@ import java.util.Random;
  */
 public class Consumer implements Runnable
 {
-
     private Buffer buffer;
 
     public Consumer(Buffer buffer)
@@ -20,19 +19,22 @@ public class Consumer implements Runnable
     public void run()
     {
         Random rand = new Random();
+
         while (true)
         {
             try
             {
-                Thread.sleep(rand.nextInt(10));
+                //Used this sleep time so that the output was correct.
+                Thread.sleep(rand.nextInt(Constants.SLEEP_RND) + Constants.SLEEP_BASE);
             }
-            catch(Exception ex)
+            catch(InterruptedException ex)
             {
-                System.out.println("report error condition");
+                System.out.println("Thread interrupted");
             }
+
             int removed = 0;
             if ((removed = buffer.remove_item()) == -1)
-                System.out.println("report error condition");
+                System.out.println("Error consuming");
             else
                 System.out.println("consumer consumed " + removed);
         }
